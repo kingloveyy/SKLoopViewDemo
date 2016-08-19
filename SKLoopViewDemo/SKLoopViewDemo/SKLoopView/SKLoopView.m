@@ -28,6 +28,12 @@ NSString * const SKLoopViewCellID = @"SKLoopViewCellID";
         self.delegate = self;
         self.dataSource = self;
         [self registerClass:[SKLoopViewCell class] forCellWithReuseIdentifier:SKLoopViewCellID];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:_urls.count inSection:0];
+            [self scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
+            
+        });
     }
     return self;
 }
